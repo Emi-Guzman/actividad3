@@ -140,10 +140,12 @@ def move():
                 vector(0, 10),
                 vector(0, -10),
             ]
-            plan = choice(options)
+            options.sort(key=lambda v: abs((point +v).x -pacman.x)+ abs((point +v).y - pacman.y))
+            plan = options[0]
             course.x = plan.x
             course.y = plan.y
-
+            point.move(course)
+    
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
